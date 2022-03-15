@@ -60,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    private BluetoothConnection selectedDevice;
 
+    private BluetoothConnection selectedDevice;
 
     public void browseBluetoothDevice() {
         final BluetoothConnection[] bluetoothDevicesList = (new BluetoothPrintersConnections()).getList();
@@ -137,37 +137,26 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("SimpleDateFormat")
     public AsyncEscPosPrinter getAsyncEscPosPrinter(DeviceConnection printerConnection) {
-        SimpleDateFormat format = new SimpleDateFormat("'on' yyyy-MM-dd 'at' HH:mm:ss");
+        SimpleDateFormat format = new SimpleDateFormat("dd MM yyyy");
         AsyncEscPosPrinter printer = new AsyncEscPosPrinter(printerConnection, 203, 48f, 32);
         return printer.addTextToPrint(
                 "[C]<img>" + PrinterTextParserImg.bitmapToHexadecimalString(printer, this.getApplicationContext().getResources().getDrawableForDensity(R.drawable.agent_bugadde, DisplayMetrics.DENSITY_MEDIUM)) + "</img>\n" +
-                        "[L]\n" +
-                        "[C]<u><font size='big'>ORDER N°045</font></u>\n" +
-                        "[L]\n" +
-                        "[C]<u type='double'>" + format.format(new Date()) + "</u>\n" +
-                        "[C]\n" +
-                        "[C]================================\n" +
-                        "[L]\n" +
-                        "[L]<b>BEAUTIFUL SHIRT</b>[R]9.99€\n" +
-                        "[L]  + Size : S\n" +
-                        "[L]\n" +
-                        "[L]<b>AWESOME HAT</b>[R]24.99€\n" +
-                        "[L]  + Size : 57/58\n" +
-                        "[L]\n" +
+                        "[C]<u><font size='big'>BUGADDE SACCO</font></u>\n" +
+                        "[C]<u><font size='small'>Mayuge Branch</font></u>\n" +
                         "[C]--------------------------------\n" +
-                        "[R]TOTAL PRICE :[R]34.98€\n" +
-                        "[R]TAX :[R]4.23€\n" +
-                        "[L]\n" +
-                        "[C]================================\n" +
-                        "[L]\n" +
-                        "[L]<u><font color='bg-black' size='tall'>Customer :</font></u>\n" +
-                        "[L]Raymond DUPONT\n" +
-                        "[L]5 rue des girafes\n" +
-                        "[L]31547 PERPETES\n" +
-                        "[L]Tel : +33801201456\n" +
-                        "\n" +
-                        "[C]<barcode type='ean13' height='10'>831254784551</barcode>\n" +
-                        "[L]\n"
+                        "[C]<u><font size='small'>Cash Withdrawal</font></u>\n" +
+                        "[L]<b>Ref No:</b>[R]gjjkvdn\n" +
+                        "[L]<b>Date:</b>[R]<u type='double'>" + format.format(new Date()) + "</u>\n" +
+                        "[C]--------------------------------\n" +
+                        "[L]<b>A/C No:</b>[R]2502086551\n" +
+                        "[L]<b>A/C Name: EVELYNE KUSASIRA NAKIYEMBA</b>\n" +
+                        "[C]--------------------------------\n" +
+                        "[L]<b>Amount:</b>[R]UGX 500\n" +
+                        "[L]<b>Five Hundred sixty Shillings only</b>\n" +
+                        "[L]<b>Narration</b>[R]Withdraw\n" +
+                        "[C]--------------------------------\n" +
+                        "[C]--------------------------------\n" +
+                        "[C]<u><font size='small'>Thank you for your support</font></u>\n"
         );
     }
 
